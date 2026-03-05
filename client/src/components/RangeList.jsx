@@ -5,7 +5,7 @@ export default function RangeList({ onSelectRange }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/ranges')
+    fetch('/api/ranges')
       .then(res => res.json())
       .then(data => {
         setRanges(data);

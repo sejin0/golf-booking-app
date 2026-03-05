@@ -11,7 +11,7 @@ function App() {
 
   // 예약 목록 가져오기
   const fetchBookings = () => {
-    fetch('http://localhost:5000/api/bookings')
+    fetch('/api/bookings')
       .then(res => res.json())
       .then(data => setBookings(data))
       .catch(err => console.error("예약 조회 실패:", err));
@@ -32,7 +32,7 @@ function App() {
   };
 
   const handleCancelBooking = (id) => {
-    fetch(`http://localhost:5000/api/bookings/${id}`, {
+    fetch(`/api/bookings/${id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())

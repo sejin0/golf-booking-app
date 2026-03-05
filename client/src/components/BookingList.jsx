@@ -5,7 +5,7 @@ export default function BookingList({ bookings, onCancelBooking }) {
 
   // 범위 정보 캐싱
   useEffect(() => {
-    fetch('http://localhost:5000/api/ranges')
+    fetch('/api/ranges')
       .then(res => res.json())
       .then(data => {
         const rangeMap = {};

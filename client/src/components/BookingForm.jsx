@@ -15,7 +15,7 @@ export default function BookingForm({ range, onBookingSuccess }) {
 
   // 타석 목록 가져오기
   useEffect(() => {
-    fetch(`http://localhost:5000/api/ranges/${range.id}/slots`)
+    fetch(`/api/ranges/${range.id}/slots`)
       .then(res => res.json())
       .then(data => {
         setSlots(data);
@@ -29,7 +29,7 @@ export default function BookingForm({ range, onBookingSuccess }) {
   // 실시간 노가동 시간대 가져오기
   useEffect(() => {
     if (formData.slotId) {
-      fetch(`http://localhost:5000/api/ranges/${range.id}/availability?date=${formData.date}&slotId=${formData.slotId}`)
+      fetch(`/api/ranges/${range.id}/availability?date=${formData.date}&slotId=${formData.slotId}`)
         .then(res => res.json())
         .then(data => setTimeSlots(data))
         .catch(err => console.error("시간대 조회 실패:", err));
@@ -50,7 +50,7 @@ export default function BookingForm({ range, onBookingSuccess }) {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/bookings', {
+      const response = await fetch('/api/bookings', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
